@@ -10,7 +10,8 @@
 	    });
 	});
 	
-	router.post('/',(req, res, next) =>{	 
+	router.post('/',(req, res, next) =>{
+		
 	 var userDetails ={
 		 userId: req.body.userId,
 		 userName: req.body.userName
@@ -25,6 +26,23 @@
 		 userDetails: userDetails
 	    });
 	});
+	
+	//retrieve the match user ..
+	router.get('/:userId', (req, res, next) =>{
+		var user = {};
+		for( var i = 0; i < userDetailsList.length; i++){
+			if(req.params.userId == userDetailsList[i].userId){
+			user = userDetailsList[i];
+				break;
+			}
+		}
+		
+		 res.status(200).json({
+		 message: 'userDetails',
+		 userDetail: user
+	    });
+	});
+	
 	
 	
  module.exports = router;
