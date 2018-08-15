@@ -15,6 +15,9 @@ const server = http.createServer( function (req, res) {
     }else if (req.url == "/profile"){
         res.statusCode == 200;
         res.end("You are in profile page");
+    }else if (req.url == "/store"){
+        res.statusCode == 200;
+        res.end("You are in Store page");
     } else {
         res.statusCode = 404;
         res.end("this is NOT the homepage")
