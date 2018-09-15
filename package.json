@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pcIST/API_Development/issues"
   },
-  "homepage": "https://github.com/pcIST/API_Development#readme"
+  "homepage": "https://github.com/pcIST/API_Development#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
