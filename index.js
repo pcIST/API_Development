@@ -35,8 +35,12 @@ const port = 3001
 const myfunc = (req, res) =>
     res.send('this is the homepage')
 
+const mim = (req, res) =>
+    res.send('Welcome :)')
+
 app.get('/', myfunc)
 
+app.get('/mim', mim)
 app.listen(port, () =>
     console.log(`Our app listening on port ${port}!`)
 )
