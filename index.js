@@ -21,7 +21,7 @@
 //     } else {
 //         res.statusCode = 404;
 //         res.end("you lost, bro or sis?")
-//     }    
+//     }
 // }).listen(3000, 'localhost', function() {
 //     console.log("the port is: ");
 //     console.log(server.address().port);
@@ -37,6 +37,10 @@ const myfunc = (req, res) =>
 
 app.get('/', myfunc)
 
+// sir root
+app.get('/sir',(req,res)=>res.send('You are in sir page'));
+
+// shaon's page
 const shaonFunc = (req, res) =>
 	res.send('This page belongs to Shaon')
 
