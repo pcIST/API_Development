@@ -37,11 +37,21 @@ const myfunc = (req, res) =>
 
 app.get('/', myfunc)
 
-
+// RussellExpress
 const Russellfunc = (req, res) =>
     res.send('This Is The Homepage Of RussellMurad')
 
 app.get('/russell', Russellfunc)
+
+// sir root
+app.get('/sir',(req,res)=>res.send('You are in sir page'));
+
+// shaon's page
+const shaonFunc = (req, res) =>
+	res.send('This page belongs to Shaon')
+
+app.get('/shaon', shaonFunc)
+
 
 app.listen(port, () =>
     console.log(`Our app listening on port ${port}!`)
