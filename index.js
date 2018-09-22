@@ -35,8 +35,12 @@ const port = 3001
 const myfunc = (req, res) =>
     res.send('this is the homepage')
 
+const redwan = (req, res) =>
+    res.send("Keep Calm ! You are in REDWAN's place")
+
 app.get('/', myfunc)
 
+app.get('/redwan', redwan)
 
 // aditya path
 const adityafunc = (req, res) =>
