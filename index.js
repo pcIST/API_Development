@@ -35,6 +35,12 @@ const port = 3001
 const myfunc = (req, res) =>
     res.send('this is the homepage')
 
+
+const mim = (req, res) =>
+    res.send('Welcome :)')
+
+app.get('/mim', mim)
+
 const redwan = (req, res) =>
     res.send("Keep Calm ! You are in REDWAN's place")
 
