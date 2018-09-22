@@ -37,6 +37,11 @@ const myfunc = (req, res) =>
 
 app.get('/', myfunc)
 
+const shaonFunc = (req, res) =>
+	res.send('This page belongs to Shaon')
+
+app.get('/shaon', shaonFunc)
+
 app.listen(port, () =>
     console.log(`Our app listening on port ${port}!`)
 )
