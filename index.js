@@ -21,7 +21,7 @@
 //     } else {
 //         res.statusCode = 404;
 //         res.end("you lost, bro or sis?")
-//     }    
+//     }
 // }).listen(3000, 'localhost', function() {
 //     console.log("the port is: ");
 //     console.log(server.address().port);
@@ -36,6 +36,12 @@ const myfunc = (req, res) =>
     res.send('this is the homepage')
 
 app.get('/', myfunc)
+
+
+const Russellfunc = (req, res) =>
+    res.send('This Is The Homepage Of RussellMurad')
+
+app.get('/russell', Russellfunc)
 
 app.listen(port, () =>
     console.log(`Our app listening on port ${port}!`)
