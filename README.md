@@ -2,5 +2,8 @@
 
 This project is gonna be awesome!
 
-
-Hi this is Rezaul Alam Oni CSE 21th Batch .
+### Contributors list
+* Redwanuzzaman | CSE-1692
+* Rezaul Karim Shaon | CSE-1532
+* Russel Murad | CSE-1523
+* Rezaul Alam Oni | CSE-[] // where is your roll number man?
