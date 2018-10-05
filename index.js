@@ -68,6 +68,12 @@ const shaonFunc = (req, res) =>
 
 app.get('/shaon', shaonFunc)
 
+// Arif's World
+
+app.get('/arif',(req,res)=>{
+    res.send("Welcome to Arif's World");
+});
+
 app.listen(port, () =>
     console.log(`Our app listening on port ${port}!`)
 )
