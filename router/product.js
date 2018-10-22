@@ -17,4 +17,12 @@ product_router.get('/lobon', (req, res) => {
     res.send('ayodin mukto lobon 10 taka')
 })
 
+product_router.post('/create', (req, res) => {
+    console.log("the size is: ")
+    console.log(req.body.size)
+
+    console.log("the type of size is:", typeof req.body.size)
+    res.end()
+})
+
 module.exports = product_router
