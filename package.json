@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/pcIST/API_Development#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.4"
   }
 }
