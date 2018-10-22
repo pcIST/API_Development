@@ -1,7 +1,18 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const port = 3001
+
+// connect mongoDB
+// mongodb://<dbuser>:<dbpassword>@<dbhost>:<dbport>/<dbname>
+const dbuser = "pcist"
+const password = "telbechbo00"
+const dbhost = "ds237363.mlab.com"
+const dbport = 37363
+const dbname = "pcist-shop"
+
+mongoose.connect(`mongodb://${dbuser}:${password}@${dbhost}:${dbport}/${dbname}`)
 
 // Using body-parser npm package to parse request body
 app.use(bodyParser.json())
