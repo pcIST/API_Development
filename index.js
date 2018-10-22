@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 const port = 3001
+
+// Using body-parser npm package to parse request body
+app.use(bodyParser.json())
 
 const profile_router = require('./router/site')
 const product_router = require('./router/product')
