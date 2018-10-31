@@ -34,11 +34,15 @@ product_router.post('/create', (req, res) => {
         smell : req.body.smell,
     });
     item.save((err)=>{
-        if(err){
-            return handleError(err);
+        if(!err){
+            console.log("Item Saved Successfully :) ");
         }
-        console.log("Item Saved Successfully :) ");
+        else{
+            console.error(err);
+        }
     });
+
+    //res.send()
     
     //console.log("the size is: ")
     //console.log(req.body.size)
