@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
-const prodSchema = new mongoose.schema({
-    "name": String,
+const prodSchema = new mongoose.Schema({
     "name": {type: String, require: true},
     "price": {type: Number, min:1, max: 1000},
     "brand": String,
@@ -15,3 +14,13 @@ const prodSchema = new mongoose.schema({
 })
 
 const prodModel = mongoose.model('Product', prodSchema)
+
+module.exports = prodModel; 
+
+
+
+
+//const Cat = mongoose.model('Cat', { name: String });
+
+//const kitty = new Cat({ name: 'Zildjian' });
+//kitty.save().then(() => console.log('meow'));

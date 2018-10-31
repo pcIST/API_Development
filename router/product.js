@@ -1,4 +1,5 @@
 const express = require('express')
+const productModel = require('./../model/product')
 const product_router = express.Router()
 
 product_router.get('/', (req, res) => {
@@ -18,10 +19,31 @@ product_router.get('/lobon', (req, res) => {
 })
 
 product_router.post('/create', (req, res) => {
-    console.log("the size is: ")
-    console.log(req.body.size)
 
-    console.log("the type of size is:", typeof req.body.size)
+    const item = new productModel({
+        name: req.body.name,
+        price: req.body.price,
+        brand: req.body.brand,
+        quantity: req.body.quantity,
+        size: req.body.size,
+        unit: req.body.unit,
+        color: req.body.color,
+        created_at: req.body.created_at,
+        expired_date:req.body.expired_date,
+        license: req.body.license,
+        smell: req.body.smell,
+    });
+    item.save((err)=>{
+        if(err){
+            return handleError(err);
+        }
+        console.log("Item Saved Successfully :) ");
+    });
+    
+    //console.log("the size is: ")
+    //console.log(req.body.size)
+
+    //console.log("the type of size is:", typeof req.body.size)
     res.end()
 })
 
