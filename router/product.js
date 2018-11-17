@@ -32,7 +32,13 @@ product_router.get('/saban', (req, res) => {
 })
 
 product_router.get('/lobon', (req, res) => {
-    res.send('ayodin mukto lobon 10 taka')
+    // res.send('ayodin mukto lobon 10 taka')
+    prodModel.find({name: "lobon"}, (err, product) => {
+        if (err) {
+            res.send(err)
+        }
+        res.json(product)
+    })
 })
 
 product_router.post('/create', (req, res) => {    
