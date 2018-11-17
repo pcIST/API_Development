@@ -10,7 +10,7 @@ product_router.get('/', (req, res) => {
         else if(result){
             res.json(result);
         }
-       });
+    });
 })
 
 product_router.get('/tel', (req, res) => {
@@ -21,7 +21,7 @@ product_router.get('/tel', (req, res) => {
         else if(result){
             res.json(result);
         }
-       });
+    });
 })
 
 product_router.get('/teilla', (req, res) => {
@@ -42,10 +42,10 @@ product_router.get('/saban', (req, res) => {
 
     final_res = {}
     const item = productModel.findOne({name : "saban", mullo: price_value},(err, result)=>{
-        if(err){
+        if (err) {
             throw err;
         }
-        else if(result){
+        else if (result) {
             final_res = result
         }
 
@@ -66,17 +66,17 @@ product_router.get('/saban', (req, res) => {
 })
 
 product_router.get('/lobon', (req, res) => {
-    const item = productModel.find({name : "lobon"},(err, result)=>{
-        if(err){
+    const item = productModel.find({name : "lobon"}, (err, result) => {
+        if (err) {
             throw err;
         }
-        else if(result){
+        else if (result) {
             res.json(result);
         }
-       });
+    });
 })
 
-product_router.post('/create', (req, res) => {    
+product_router.post('/create', (req, res) => {
     let item = new productModel({
         "name": req.body.name,
         "price": req.body.price,
@@ -89,13 +89,13 @@ product_router.post('/create', (req, res) => {
         "license": req.body.license,
         "smell": req.body.smell
     });
-
+    
     // error object definition
     let client_err = {}
     item.save( (err) => {
         if (err) client_err = err
     })
-
+    
     if (client_err) {
         return res.send(422, {
             "message": "tumi kichu ekta vul korso vai/bon",
