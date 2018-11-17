@@ -12,7 +12,13 @@ product_router.get('/', (req, res) => {
 })
 
 product_router.get('/tel', (req, res) => {
-    res.send('tel er dam ajke 100 taka')
+    // res.send('tel er dam ajke 100 taka')
+    prodModel.find({name: "tel"}, (err, product) => {
+        if (err) {
+            res.send(err)
+        }
+        res.json(product)
+    })
 })
 
 product_router.get('/saban', (req, res) => {
