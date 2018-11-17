@@ -24,15 +24,45 @@ product_router.get('/tel', (req, res) => {
        });
 })
 
+product_router.get('/teilla', (req, res) => {
+    const item = productModel.find({name : "teilla"},(err, result)=>{
+        if(err || result.length == 0){
+            res.send(404, {"message" : "pai nai", "error": err})
+            // throw err;
+        }
+        else if(result){
+            res.end("result paisi");
+        }
+    });
+})
+
 product_router.get('/saban', (req, res) => {
-   const item = productModel.find({name : "saban"},(err, result)=>{
-    if(err){
-        throw err;
-    }
-    else if(result){
-        res.json(result);
-    }
-   });
+    const price_value = req.query.price
+    // console.log(req.query.price)
+
+    final_res = {}
+    const item = productModel.findOne({name : "saban", mullo: price_value},(err, result)=>{
+        if(err){
+            throw err;
+        }
+        else if(result){
+            final_res = result
+        }
+
+        if (final_res) {
+            return res.send(200, {
+                "result" : {
+                    "name": final_res.name,
+                    "price": final_res.price,
+                    "brand": final_res.brand,
+                    "color": final_res.color,
+                    "smell": final_res.smell,
+                }
+            });
+        } else {
+            return res.send(404, {"message": "nai, sorry for waiting"})
+        }
+    });
 })
 
 product_router.get('/lobon', (req, res) => {
