@@ -22,7 +22,13 @@ product_router.get('/tel', (req, res) => {
 })
 
 product_router.get('/saban', (req, res) => {
-    res.send("saban 1 pc 25 taka")
+    // res.send("saban 1 pc 25 taka")
+    prodModel.find({name: "saban"}, (err, product) => {
+        if (err) {
+            res.send(err)
+        }
+        res.json(product)
+    })
 })
 
 product_router.get('/lobon', (req, res) => {
