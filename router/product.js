@@ -46,37 +46,33 @@ product_router.get('/lobon', (req, res) => {
        });
 })
 
-product_router.post('/create', (req, res) => {
-
-    const item = new productModel({
-        name : req.body.name,
-        price : req.body.price,
-        brand : req.body.brand,
-        quantity : req.body.quantity,
-        size : req.body.size,
-        unit : req.body.unit,
-        color : req.body.color,
-        created_at : req.body.created_at,
-        expired_date :req.body.expired_date,
-        license : req.body.license,
-        smell : req.body.smell,
-    });
-    item.save((err)=>{
-        if(!err){
-            console.log("Item Saved Successfully :) ");
-        }
-        else{
-            console.error(err);
-        }
+product_router.post('/create', (req, res) => {    
+    let item = new productModel({
+        "name": req.body.name,
+        "price": req.body.price,
+        "brand": req.body.brand,
+        "quantity": req.body.quantity,
+        "size": req.body.size,
+        "unit": req.body.unit,
+        "color": req.body.color,
+        "expired_date": req.body.expired_date,
+        "license": req.body.license,
+        "smell": req.body.smell
     });
 
-    //res.send()
-    
-    //console.log("the size is: ")
-    //console.log(req.body.size)
+    // error object definition
+    let client_err = {}
+    item.save( (err) => {
+        if (err) client_err = err
+    })
 
-    //console.log("the type of size is:", typeof req.body.size)
-    res.end()
+    if (client_err) {
+        return res.send(422, {
+            "message": "tumi kichu ekta vul korso vai/bon",
+            "error": client_err
+        })
+    }
+    return res.send(201, {"message": "item jog hoyeche, apnake dhonnobad!"})
 })
 
 module.exports = product_router
