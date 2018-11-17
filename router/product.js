@@ -1,25 +1,53 @@
 const express = require('express')
-const prodModel = require('../model/product')
+const productModel = require('./../model/product')
 const product_router = express.Router()
 
 product_router.get('/', (req, res) => {
-    res.send('amader product list ekhane dekha jabe')
+    const item = productModel.find({},(err, result)=>{
+        if(err){
+            throw err;
+        }
+        else if(result){
+            res.json(result);
+        }
+       });
 })
 
 product_router.get('/tel', (req, res) => {
-    res.send('tel er dam ajke 100 taka')
+    const item = productModel.find({name : "tel"},(err, result)=>{
+        if(err){
+            throw err;
+        }
+        else if(result){
+            res.json(result);
+        }
+       });
 })
 
 product_router.get('/saban', (req, res) => {
-    res.send("saban 1 pc 25 taka")
+   const item = productModel.find({name : "saban"},(err, result)=>{
+    if(err){
+        throw err;
+    }
+    else if(result){
+        res.json(result);
+    }
+   });
 })
 
 product_router.get('/lobon', (req, res) => {
-    res.send('ayodin mukto lobon 10 taka')
+    const item = productModel.find({name : "lobon"},(err, result)=>{
+        if(err){
+            throw err;
+        }
+        else if(result){
+            res.json(result);
+        }
+       });
 })
 
 product_router.post('/create', (req, res) => {    
-    let item = new prodModel({
+    let item = new productModel({
         "name": req.body.name,
         "price": req.body.price,
         "brand": req.body.brand,
