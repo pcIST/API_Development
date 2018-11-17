@@ -3,7 +3,12 @@ const prodModel = require('../model/product')
 const product_router = express.Router()
 
 product_router.get('/', (req, res) => {
-    res.send('amader product list ekhane dekha jabe')
+    prodModel.find({}, (err, product) => {
+        if (err) {
+            res.send("Something went wrong..")
+        }
+        res.json(product)
+    })
 })
 
 product_router.get('/tel', (req, res) => {
