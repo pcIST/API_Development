@@ -13,67 +13,48 @@ product_router.get('/', (req, res) => {
     });
 })
 
-product_router.get('/tel', (req, res) => {
-    const item = productModel.find({name : "tel"},(err, result)=>{
-        if(err){
-            throw err;
-        }
-        else if(result){
-            res.json(result);
-        }
-    });
-})
-
-product_router.get('/teilla', (req, res) => {
-    const item = productModel.find({name : "teilla"},(err, result)=>{
-        if(err || result.length == 0){
-            res.send(404, {"message" : "pai nai", "error": err})
-            // throw err;
-        }
-        else if(result){
-            res.end("result paisi");
-        }
-    });
-})
-
-product_router.get('/saban', (req, res) => {
-    const price_value = req.query.price
-    // console.log(req.query.price)
-
-    final_res = {}
-    const item = productModel.findOne({name : "saban", mullo: price_value},(err, result)=>{
+product_router.get('/:name', (req, res) => {
+    let query = {
+        name: req.params.name,
+    }
+    let q = req.query
+    if (q.price) {
+        query.price = q.price
+    }
+    if (q.brand) {
+        query.brand = q.brand
+    }
+    if (q.quantity) {
+        query.quantity = q.quantity
+    }
+    if (q.size) {
+        query.size = q.size
+    }
+    if (q.unit) {
+        query.unit = q.unit
+    }
+    if (q.color) {
+        query.color = q.color
+    }
+    productModel.findOne(query, (err, result) => {
         if (err) {
             throw err;
         }
         else if (result) {
-            final_res = result
+            res.json({
+                "name": result.name,
+                "price": result.price,
+                "brand": result.brand,
+                "quantity": result.quantity,
+                "size": result.size,
+                "unit": result.unit,
+                "color": result.color,
+            })
         }
-
-        if (final_res) {
-            return res.send(200, {
-                "result" : {
-                    "name": final_res.name,
-                    "price": final_res.price,
-                    "brand": final_res.brand,
-                    "color": final_res.color,
-                    "smell": final_res.smell,
-                }
-            });
-        } else {
-            return res.send(404, {"message": "nai, sorry for waiting"})
+        else {
+            res.status(404).json({"message": "Sorry, product not found."})
         }
-    });
-})
-
-product_router.get('/lobon', (req, res) => {
-    const item = productModel.find({name : "lobon"}, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        else if (result) {
-            res.json(result);
-        }
-    });
+    })
 })
 
 product_router.post('/create', (req, res) => {
