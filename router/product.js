@@ -13,6 +13,7 @@ product_router.get('/', (req, res) => {
     });
 })
 
+// get product
 product_router.get('/:name', (req, res) => {
     let query = {
         name: req.params.name,
@@ -57,6 +58,7 @@ product_router.get('/:name', (req, res) => {
     })
 })
 
+// create product
 product_router.post('/create', (req, res) => {
     let item = new productModel({
         "name": req.body.name,
@@ -84,6 +86,34 @@ product_router.post('/create', (req, res) => {
         })
     }
     return res.send(201, {"message": "item jog hoyeche, apnake dhonnobad!"})
+})
+
+// update product
+product_router.patch('/:product_id', (req, res) => {
+    const reqBody = req.body
+    
+    productModel.updateOne({_id: req.params.product_id}, reqBody, (err, result) => {
+        if (err) {
+            return res.send(400, {message: "something went wrong!"})
+        }
+
+        if (result) {
+            return res.send(200, {message: "successfully updated", data: result})
+        }
+    })
+})
+
+// delete product
+product_router.delete('/:product_id', (req, res) => {
+    productModel.deleteOne({_id: req.params.product_id}, (err, result) => {
+        if (err) {
+            return res.send(400, {message: "something went wrong!"})
+        }
+
+        if (result) {
+            return res.send(204)
+        }
+    })
 })
 
 module.exports = product_router
