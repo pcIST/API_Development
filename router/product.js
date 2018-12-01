@@ -74,18 +74,16 @@ product_router.post('/create', (req, res) => {
     });
     
     // error object definition
-    let client_err = {}
     item.save( (err) => {
-        if (err) client_err = err
+        if (err) {
+            console.log(client_err)
+            return res.send(422, {
+                "message": "tumi kichu ekta vul korso vai/bon",
+                "error": client_err
+            })
+        }
+        return res.send(201, {"message": "item jog hoyeche, apnake dhonnobad!"})
     })
-    
-    if (client_err) {
-        return res.send(422, {
-            "message": "tumi kichu ekta vul korso vai/bon",
-            "error": client_err
-        })
-    }
-    return res.send(201, {"message": "item jog hoyeche, apnake dhonnobad!"})
 })
 
 // update product
