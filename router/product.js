@@ -19,23 +19,8 @@ product_router.get('/:name', (req, res) => {
         name: req.params.name,
     }
     let q = req.query
-    if (q.price) {
-        query.price = q.price
-    }
-    if (q.brand) {
-        query.brand = q.brand
-    }
-    if (q.quantity) {
-        query.quantity = q.quantity
-    }
-    if (q.size) {
-        query.size = q.size
-    }
-    if (q.unit) {
-        query.unit = q.unit
-    }
-    if (q.color) {
-        query.color = q.color
+    for (let property in q) {
+        query[property] = q[property];
     }
     productModel.findOne(query, (err, result) => {
         if (err) {
