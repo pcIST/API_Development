@@ -1,0 +1,52 @@
+GET http://localhost:8005/product/Tel?color=green
+Accept: application/json
+
+###
+GET http://localhost:8005/
+Accept: application/json
+
+###
+GET http://localhost:8005/profile/aditya
+Accept: application/json
+
+###
+GET http://localhost:8005/product
+Accept: application/json
+
+###
+GET http://localhost:8005/product/Tel
+Accept: application/json
+
+###
+POST http://localhost:8005/product/create
+Content-Type: application/json
+
+{
+  "name": "Tel",
+  "price": 10,
+  "brand": "Teer",
+  "quantity": 2,
+  "size": 1,
+  "unit": "liter",
+  "color": "red",
+  "expired_date": "10-10-10",
+  "license": "MIT",
+  "smell": ""
+}
+
+###
+POST http://localhost:8005/product/create
+Content-Type: application/json
+
+{
+  "name": "Morich",
+  "price": 10,
+  "brand": "Radhuni",
+  "quantity": 2,
+  "size": 1,
+  "unit": "KG",
+  "color": "Yellow",
+  "expired_date": "10-10-10",
+  "license": "MIT",
+  "smell": ""
+}
